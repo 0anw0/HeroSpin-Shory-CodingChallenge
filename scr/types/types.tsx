@@ -31,3 +31,7 @@ export type FilmInfoSectionType = {
   type: string;
   value: string;
 };
+
+export type FilmNameComponentType = {
+  title: string;
+};

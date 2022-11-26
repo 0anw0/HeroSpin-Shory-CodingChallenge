@@ -1,9 +1,14 @@
-import React, {useState} from 'react';
-import {Text, View} from 'react-native';
+import React from 'react';
+import { View} from 'react-native';
 import Animated, {SlideInDown, SlideInUp} from 'react-native-reanimated';
 
-import { FilmInfoSection } from 'components';
-import {BACKGROUND_COLOR, generalStyles, MAIN_COLOR, WHITE} from 'styles';
+import {FilmInfoSection} from 'components';
+import {
+  BACKGROUND_COLOR,
+  generalStyles,
+} from 'styles';
+
+import {FilmNameAndButtons} from 'components';
 
 const data = {
   Title: 'Guardians of the Galaxy Vol. 2',
@@ -56,7 +61,7 @@ export default function RandomPickScreen() {
         flex: 1,
         ...generalStyles.centerAlign,
       }}>
-      
+      <FilmNameAndButtons title={Title} />
       <FilmInfoSection type={'Actors'} value={Actors} />
       <FilmInfoSection type={'Year'} value={Year} />
       <FilmInfoSection type={'BoxOffice'} value={BoxOffice} />
