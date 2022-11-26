@@ -73,7 +73,7 @@ export default function SplashScreen({navigation}: screenProps) {
             width: '80%',
           },
         ]}>
-        <Text style={{fontFamily: 'Cairo-Bold.ttf', fontSize: 20}}>
+        <Text style={{fontFamily: 'Cairo-Bold', fontSize: 20, textAlign:'center'}}>
           Can't decide what super heros film to watch? Let Hero Spin help you.
         </Text>
       </View>

@@ -7,14 +7,14 @@ module.exports = {
         cwd: 'babelrc',
         extensions: ['.ts', '.tsx', '.js', '.ios.js', '.android.js'],
         alias: {
-          'navigator': './scr/navigation/index.tsx', 
-          'screens': './scr/screens/index.tsx', 
-          "styles": './scr/styles/index.tsx', 
-          "utils":'./scr/utils/index.tsx'
-        }
-      }
+          navigator: './scr/navigation/index.tsx',
+          screens: './scr/screens/index.tsx',
+          styles: './scr/styles/index.tsx',
+          utils: './scr/utils/index.tsx',
+          components: './scr/components/index.tsx',
+        },
+      },
     ],
-    'jest-hoist'
-  ]
+    'jest-hoist',
+  ],
 };
-
