@@ -5,7 +5,7 @@ import {FilmNameComponentType} from 'types';
 import {generalStyles, SEC_COLOR, MAIN_COLOR, WHITE} from 'styles';
 import Animated, {SlideInUp} from 'react-native-reanimated';
 
-const FilmNameAndButtons = ({title, duration}: FilmNameComponentType) => {
+const FilmNameAndButtons = ({title, duration, onSufflePress, onViewPress}: FilmNameComponentType) => {
   return (
     <Animated.View entering={SlideInUp.duration(duration)} style={{height: '30%', width: '100%'}}>
       <View
@@ -20,11 +20,11 @@ const FilmNameAndButtons = ({title, duration}: FilmNameComponentType) => {
         </Text>
       </View>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={onSufflePress}>
           <FontAwesome5 name={`random`} size={24} color={'#fff'} />
           <Text style={styles.buttonTitle}>SUFFLE</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={onViewPress}>
           <Text style={styles.buttonTitle}>VIEW</Text>
           <FontAwesome5 name={`arrow-right`} size={24} color={'#fff'} />
         </TouchableOpacity>

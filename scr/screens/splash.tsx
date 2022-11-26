@@ -1,7 +1,8 @@
-import React, {useMemo} from 'react';
+import React, {useEffect, useMemo} from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import {Button} from 'react-native-elements';
 import FastImage from 'react-native-fast-image';
+import Orientation from 'react-native-orientation-locker';
 
 import {generalStyles} from 'styles';
 import {screenProps} from 'scr/types/types';
@@ -14,6 +15,9 @@ import {TOTALLY_RANDOM, PICK_SUPER_HERO} from 'utils';
  *
  */
 export default function SplashScreen({navigation}: screenProps) {
+  useEffect(() => {
+    Orientation.lockToPortrait(); 
+  }, [])
   /**
    * Requiring Logo image and memoizing it.
    *

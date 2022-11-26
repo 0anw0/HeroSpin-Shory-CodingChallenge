@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View} from 'react-native';
-import Animated, {SlideInDown, SlideInUp} from 'react-native-reanimated';
+import Orientation from 'react-native-orientation-locker';
 
 import {FilmInfoSection} from 'components';
 import {
@@ -9,6 +9,8 @@ import {
 } from 'styles';
 
 import {FilmNameAndButtons} from 'components';
+import { screenProps } from 'types';
+import { FILM_DETAILS } from '../utils/screensName';
 
 const data = {
   Title: 'Guardians of the Galaxy Vol. 2',
@@ -52,8 +54,15 @@ const data = {
   Response: 'True',
 };
 
-export default function RandomPickScreen() {
+export default function RandomPickScreen({navigation}:screenProps) {
+  useEffect(() => {
+    Orientation.lockToPortrait(); 
+  }, [])
+
   const {Title, Year, Genre, Actors, Awards, BoxOffice} = data;
+  
+  const _navigateToDetailsScreen = ()=> navigation.navigate(FILM_DETAILS)
+
   return (
     <View
       style={{
@@ -61,7 +70,7 @@ export default function RandomPickScreen() {
         flex: 1,
         ...generalStyles.centerAlign,
       }}>
-      <FilmNameAndButtons title={Title} duration={7500}/>
+      <FilmNameAndButtons title={Title} duration={7500} onViewPress={_navigateToDetailsScreen}/>
       <FilmInfoSection type={'Actors'} value={Actors} duration={4000} />
       <FilmInfoSection type={'Year'} value={Year}  duration={3000}/>
       <FilmInfoSection type={'BoxOffice'} value={BoxOffice} duration={2000} />

@@ -1,6 +1,4 @@
-export type screenProps = {
-  navigation: navigationProps;
-};
+import {StackHeaderProps, StackScreenProps} from '@react-navigation/stack';
 
 export type navigationProps = {
   toggleDrawer: () => void;
@@ -30,10 +28,16 @@ export type HeaderProps = {
 export type FilmInfoSectionType = {
   type: string;
   value: string;
-  duration:number
+  duration: number;
 };
 
 export type FilmNameComponentType = {
   title: string;
   duration: number;
+  onSufflePress?: () => void;
+  onViewPress?: () => void;
+};
+
+export type screenProps = {
+  navigation: navigationProps;
 };

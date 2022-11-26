@@ -1,14 +1,16 @@
-import React, {useMemo} from 'react';
+import React, {useEffect, useMemo} from 'react';
 import {
   View,
   Animated,
 } from 'react-native';
+import Orientation from 'react-native-orientation-locker';
 
 import {HerosDataType} from 'scr/types/types';
 import {
   BACKGROUND_COLOR,ITEM_WIDTH, width
 } from 'styles';
 import { SuperHeroCard } from 'components';
+import { screenProps } from 'types';
 
 const imageUri: string =
   'https://static.wikia.nocookie.net/marvelcinematicuniverse/images/';
@@ -61,7 +63,12 @@ const HerosData: HerosDataType[] = [
 
 const EmptyCard = () => <View style={{width: width * 0.1}}></View>;
 
-export default function PickSuperHeroScreen() {
+export default function PickSuperHeroScreen(props:screenProps) {
+
+  useEffect(() => {
+    Orientation.lockToPortrait(); 
+  }, [])
+
   const scrollX = React.useRef(new Animated.Value(0)).current;
 
   const data = [
