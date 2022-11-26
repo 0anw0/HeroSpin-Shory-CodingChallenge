@@ -1,15 +1,17 @@
 import {View, Text} from 'react-native';
 import React from 'react';
-import {generalStyles, MAIN_COLOR, WHITE} from 'styles';
+import {generalStyles, MAIN_COLOR, WHITE, width} from 'styles';
 import {getFontSize} from 'utils';
 import { FilmInfoSectionType } from 'types';
+import Animated, { SlideInUp, Easing, withTiming, withDelay} from 'react-native-reanimated';
 
 
-const FilmInfoSection = ({type, value}:FilmInfoSectionType) => {
+const FilmInfoSection = ({type, value, duration}:FilmInfoSectionType) => {
   let fontSize: number = getFontSize(value);
 
+
   return (
-    <View style={{height: '15%', width: '80%', ...generalStyles.centerAlign}}>
+    <Animated.View entering={SlideInUp.duration(duration).easing(Easing.ease)} style={{height: '15%', width: '80%', ...generalStyles.centerAlign}}>
       <View
         style={{height: '50%', width: '100%', ...generalStyles.centerAlign}}>
         <Text
@@ -30,7 +32,7 @@ const FilmInfoSection = ({type, value}:FilmInfoSectionType) => {
           {value}
         </Text>
       </View>
-    </View>
+    </Animated.View>
   );
 };
 

@@ -30,8 +30,10 @@ export type HeaderProps = {
 export type FilmInfoSectionType = {
   type: string;
   value: string;
+  duration:number
 };
 
 export type FilmNameComponentType = {
   title: string;
+  duration: number;
 };

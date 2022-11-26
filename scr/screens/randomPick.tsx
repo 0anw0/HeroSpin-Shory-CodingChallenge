@@ -61,11 +61,11 @@ export default function RandomPickScreen() {
         flex: 1,
         ...generalStyles.centerAlign,
       }}>
-      <FilmNameAndButtons title={Title} />
-      <FilmInfoSection type={'Actors'} value={Actors} />
-      <FilmInfoSection type={'Year'} value={Year} />
-      <FilmInfoSection type={'BoxOffice'} value={BoxOffice} />
-      <FilmInfoSection type={'Awards'} value={Awards} />
+      <FilmNameAndButtons title={Title} duration={7500}/>
+      <FilmInfoSection type={'Actors'} value={Actors} duration={4000} />
+      <FilmInfoSection type={'Year'} value={Year}  duration={3000}/>
+      <FilmInfoSection type={'BoxOffice'} value={BoxOffice} duration={2000} />
+      <FilmInfoSection type={'Awards'} value={Awards} duration={1000}/>
     </View>
   );
 }
