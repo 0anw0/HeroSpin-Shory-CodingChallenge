@@ -3,7 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 
 import AppNavigator from 'navigator';
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <NavigationContainer>
       <AppNavigator />
