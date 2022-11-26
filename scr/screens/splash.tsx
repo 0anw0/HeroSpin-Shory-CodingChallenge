@@ -4,6 +4,8 @@ import { Button } from 'react-native-elements';
 import FastImage from 'react-native-fast-image';
 
 import {generalStyles} from 'styles';
+import { screenProps } from 'scr/types/types';
+import { TOTALLY_RANDOM, PICK_SUPER_HERO } from 'utils';
 
 /**
  *
@@ -11,12 +13,33 @@ import {generalStyles} from 'styles';
  * @params
  *
  */
-export default function SplashScreen() {
+export default function SplashScreen({navigation}:screenProps) {
+
   /**
    * Requiring Logo image and memoizing it.
    *
    */
   const logo: any = useMemo(() => require('../../assets/logo.png'), []);
+
+  /**
+   * navigating to different screens depending on button pressed! 
+   * 
+   * @param {string} screenName: specifies the screen to be navigated to! 
+   * @return void
+   */
+  const navigateToScreen= (screenName: string)  => {
+    switch (screenName) {
+      case TOTALLY_RANDOM:()=> navigation.navigate(TOTALLY_RANDOM)
+        break;
+      case PICK_SUPER_HERO: ()=> navigation.navigate(PICK_SUPER_HERO)
+      break;
+    }
+  }
+
+
+  const _navigateToTotallyRandomScreen: ()=> void = () => navigateToScreen(TOTALLY_RANDOM)
+  const _navigateToPickSuperHeroScreen: ()=> void = () => navigateToScreen(PICK_SUPER_HERO)
+
   return (
     <View style={[generalStyles.centerAlign, generalStyles.defaultBackground]}>
       <FastImage
@@ -35,6 +58,7 @@ export default function SplashScreen() {
           marginHorizontal: 50,
           marginVertical: 10,
         }}
+        onPress={_navigateToTotallyRandomScreen}
       />
       <Button
         title={'PICK SUPER HERO'}
@@ -43,6 +67,7 @@ export default function SplashScreen() {
           marginHorizontal: 50,
           marginVertical: 10,
         }}
+        onPress={_navigateToPickSuperHeroScreen}
       />
     </View>
   );

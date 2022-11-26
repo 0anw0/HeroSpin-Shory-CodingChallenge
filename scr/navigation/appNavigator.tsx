@@ -5,7 +5,10 @@ import {
   SplashScreen,
   RandomPickScreen,
   FilmDetailsScreen,
-  PickSuperHeroScreen,} from 'screens'
+  PickSuperHeroScreen
+} from 'screens'
+
+import { } from 'util'
 
 const StackNavigator = createStackNavigator();
 

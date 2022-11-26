@@ -10,6 +10,7 @@ module.exports = {
           'navigator': './scr/navigation/index.tsx', 
           'screens': './scr/screens/index.tsx', 
           "styles": './scr/styles/index.tsx', 
+          "utils":'./scr/utils/*'
         }
       }
     ],
