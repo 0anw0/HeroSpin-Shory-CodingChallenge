@@ -1,3 +1,4 @@
+import { getFontSize } from './functions';
 import {
   TOTALLY_RANDOM,
   PICK_SUPER_HERO,
@@ -5,8 +6,9 @@ import {
   FILM_DETAILS,
 } from './screensName';
 
-export {
 
+export {
+  getFontSize,
   TOTALLY_RANDOM,
   PICK_SUPER_HERO,
   SPLASH_SCREEN,

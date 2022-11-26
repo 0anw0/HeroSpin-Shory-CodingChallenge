@@ -35,7 +35,8 @@
       "navigator":["./scr/navigation/index.tsx"],
       "styles": ["./scr/styles/index.tsx"], 
       "utils": ["./scr/utils/index.tsx"], 
-      "components":["./scr/components/index.tsx"]
+      "components":["./scr/components/index.tsx"], 
+      "types": ["./scr/types/types.tsx"]
     },                                                   /* Specify a set of entries that re-map imports to additional lookup locations. */
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */

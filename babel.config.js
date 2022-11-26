@@ -12,9 +12,12 @@ module.exports = {
           styles: './scr/styles/index.tsx',
           utils: './scr/utils/index.tsx',
           components: './scr/components/index.tsx',
+          types: './scr/types/types.tsx'
         },
       },
+      
     ],
     'jest-hoist',
+    'react-native-reanimated/plugin',
   ],
 };
