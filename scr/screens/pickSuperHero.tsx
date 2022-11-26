@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 
-export default function SelectSuperHero() {
+export default function PickSuperHeroScreen() {
 
   return (
     <View>

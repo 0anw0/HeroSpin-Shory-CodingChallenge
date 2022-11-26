@@ -1,6 +1,12 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 
+import { 
+  SplashScreen,
+  RandomPickScreen,
+  FilmDetailsScreen,
+  PickSuperHeroScreen,} from 'screens'
+
 const StackNavigator = createStackNavigator();
 
 const AppNavigator = () => {
@@ -9,10 +15,10 @@ const AppNavigator = () => {
       screenOptions={{
         headerShown: false,
       }}>
-      <StackNavigator.Screen name="Splash" component={} />
-      <StackNavigator.Screen name="RandomPick" component={} />
-      <StackNavigator.Screen name="SelectSuperHero" component={} />
-      <StackNavigator.Screen name="FilmDetails" component={} />
+      <StackNavigator.Screen name="Splash" component={SplashScreen} />
+      <StackNavigator.Screen name="RandomPick" component={RandomPickScreen} />
+      <StackNavigator.Screen name="SelectSuperHero" component={PickSuperHeroScreen} />
+      <StackNavigator.Screen name="FilmDetails" component={FilmDetailsScreen} />
     </StackNavigator.Navigator>
   );
 };

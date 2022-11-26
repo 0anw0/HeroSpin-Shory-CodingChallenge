@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { Text, View } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 
-import AppNavigator from '@navigator';
+import AppNavigator from 'navigator';
 
 const App = () => {
   return (

@@ -1,3 +1,3 @@
-import AppNavigator from "./appNavigator";
+import AppNavigator from './appNavigator';
 
 export default AppNavigator
