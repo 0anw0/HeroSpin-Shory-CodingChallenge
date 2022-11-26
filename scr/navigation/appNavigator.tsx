@@ -18,8 +18,8 @@ const AppNavigator = () => {
       screenOptions={{
         headerShown: false,
       }}>
-      <StackNavigator.Screen name={TOTALLY_RANDOM} component={SplashScreen} />
-      <StackNavigator.Screen name={SPLASH_SCREEN} component={RandomPickScreen} />
+      <StackNavigator.Screen name={SPLASH_SCREEN} component={SplashScreen} />
+      <StackNavigator.Screen name={TOTALLY_RANDOM} component={RandomPickScreen} />
       <StackNavigator.Screen name={PICK_SUPER_HERO} component={PickSuperHeroScreen} />
       <StackNavigator.Screen name={FILM_DETAILS} component={FilmDetailsScreen} />
     </StackNavigator.Navigator>

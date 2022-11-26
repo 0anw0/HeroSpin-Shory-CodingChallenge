@@ -1,11 +1,11 @@
 import React, {useMemo} from 'react';
 import {Text, View, StyleSheet} from 'react-native';
-import { Button } from 'react-native-elements';
+import {Button} from 'react-native-elements';
 import FastImage from 'react-native-fast-image';
 
 import {generalStyles} from 'styles';
-import { screenProps } from 'scr/types/types';
-import { TOTALLY_RANDOM, PICK_SUPER_HERO } from 'utils';
+import {screenProps} from 'scr/types/types';
+import {TOTALLY_RANDOM, PICK_SUPER_HERO} from 'utils';
 
 /**
  *
@@ -13,8 +13,7 @@ import { TOTALLY_RANDOM, PICK_SUPER_HERO } from 'utils';
  * @params
  *
  */
-export default function SplashScreen({navigation}:screenProps) {
-
+export default function SplashScreen({navigation}: screenProps) {
   /**
    * Requiring Logo image and memoizing it.
    *
@@ -22,35 +21,63 @@ export default function SplashScreen({navigation}:screenProps) {
   const logo: any = useMemo(() => require('../../assets/logo.png'), []);
 
   /**
-   * navigating to different screens depending on button pressed! 
-   * 
-   * @param {string} screenName: specifies the screen to be navigated to! 
+   * navigating to different screens depending on button pressed!
+   *
+   * @param {string} screenName: specifies the screen to be navigated to!
    * @return void
    */
-  const navigateToScreen= (screenName: string)  => {
+  const navigateToScreen = (screenName: string) => {
     switch (screenName) {
-      case TOTALLY_RANDOM:()=> navigation.navigate(TOTALLY_RANDOM)
+      case TOTALLY_RANDOM:
+        navigation.navigate(TOTALLY_RANDOM);
         break;
-      case PICK_SUPER_HERO: ()=> navigation.navigate(PICK_SUPER_HERO)
-      break;
+      case PICK_SUPER_HERO:
+        navigation.navigate(PICK_SUPER_HERO);
+        break;
     }
-  }
+  };
 
+  const _navigateToTotallyRandomScreen = (): void =>
+    navigateToScreen(TOTALLY_RANDOM);
 
-  const _navigateToTotallyRandomScreen: ()=> void = () => navigateToScreen(TOTALLY_RANDOM)
-  const _navigateToPickSuperHeroScreen: ()=> void = () => navigateToScreen(PICK_SUPER_HERO)
+  const _navigateToPickSuperHeroScreen = (): void =>
+    navigateToScreen(PICK_SUPER_HERO);
 
   return (
-    <View style={[generalStyles.centerAlign, generalStyles.defaultBackground]}>
-      <FastImage
-        source={logo}
-        style={{width: 150, height: 150}}
-        resizeMode={FastImage.resizeMode.contain}
-      />
+    <View
+      style={[
+        {flex: 1},
+        generalStyles.centerAlign,
+        generalStyles.defaultBackground,
+      ]}>
+      <View
+        style={[
+          generalStyles.centerAlign,
+          {
+            height: '30%',
+            width: '100%',
+          },
+        ]}>
+        <FastImage
+          source={logo}
+          style={{width: 150, height: 150}}
+          resizeMode={FastImage.resizeMode.contain}
+        />
+      </View>
 
-      <Text>
-        Can't decide what super heros film to watch? Let Hero Spin help you.
-      </Text>
+      <View
+        style={[
+          generalStyles.centerAlign,
+          {
+            height: '30%',
+            width: '80%',
+          },
+        ]}>
+        <Text style={{fontFamily: 'Cairo-Bold.ttf', fontSize: 20}}>
+          Can't decide what super heros film to watch? Let Hero Spin help you.
+        </Text>
+      </View>
+
       <Button
         title={'TOTALLY RANDOM'}
         containerStyle={{
