@@ -1,32 +1,19 @@
-import React, {useMemo, useState} from 'react';
+import React, {useMemo} from 'react';
 import {
-  FlatList,
-  FlatListProps,
-  ListRenderItemInfo,
-  TouchableOpacity,
-  StyleSheet,
-  Text,
   View,
-  ActivityIndicator,
   Animated,
-  Platform,
 } from 'react-native';
-import FastImage from 'react-native-fast-image';
 
-import {DummyDataObject} from 'scr/types/types';
-import {height, width} from 'styles';
-
-/*****************************/
-
-const ITEM_WIDTH = width * 0.75,
-  // const CARD_WIDTH = width * 0.6,
-  ITEM_HEIGHT = height * 0.75;
-const SPACING = 10;
+import {HerosDataType} from 'scr/types/types';
+import {
+  BACKGROUND_COLOR,ITEM_WIDTH, width
+} from 'styles';
+import { SuperHeroCard } from 'components';
 
 const imageUri: string =
   'https://static.wikia.nocookie.net/marvelcinematicuniverse/images/';
 
-const HerosData: DummyDataObject[] = [
+const HerosData: HerosDataType[] = [
   {
     id: 1,
     name: 'CAPTAIN AMERICA',
@@ -72,81 +59,6 @@ const HerosData: DummyDataObject[] = [
   },
 ];
 
-/*****************************/
-
-const SuperHeroCard = ({item, index, scrollX}) => {
-  const inputRange = [
-    (index - 2) * ITEM_WIDTH,
-    (index - 1) * ITEM_WIDTH,
-    index * ITEM_WIDTH,
-  ];
-
-  const translateY = scrollX.interpolate({
-    inputRange,
-    outputRange: [20, -30, 20],
-    extrapolate: 'clamp',
-  });
-
-  const [imageLoading, setImageLoading] = useState<true | false>(true);
-
-  const _onImageLoadingDone = () => setImageLoading(false);
-
-  return (
-    <View style={{width: ITEM_WIDTH}}>
-      <Animated.View
-        style={{
-          marginHorizontal: SPACING,
-          transform: [{translateY}],
-          backgroundColor: 'white',
-          borderRadius: 20,
-          justifyContent:'center', 
-          alignItems: 'center',
-        }}>
-        <TouchableOpacity
-          style={{
-            width: ITEM_WIDTH * 0.8,
-            height: ITEM_HEIGHT * 1,
-          }}>
-          <View
-            style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-              height: '10%',
-              width:'100%',
-            }}>
-            <Text
-              style={{color: 'black', fontSize: 20, fontFamily: 'Cairo-Bold'}}>
-              {item.name}
-            </Text>
-          </View>
-          {imageLoading && <ActivityIndicator size={24} color={'blue'} />}
-          <FastImage
-            source={{uri: item.uri}}
-            style={{
-              height: ITEM_HEIGHT * 0.5,
-              width: ITEM_WIDTH * 0.8,
-              borderRadius: 15,
-            }}
-            onLoadEnd={_onImageLoadingDone}
-            resizeMode={FastImage.resizeMode.cover}
-          />
-
-          <View
-            style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}></View>
-          <View
-            style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}></View>
-        </TouchableOpacity>
-      </Animated.View>
-    </View>
-  );
-};
-
 const EmptyCard = () => <View style={{width: width * 0.1}}></View>;
 
 export default function PickSuperHeroScreen() {
@@ -174,12 +86,12 @@ export default function PickSuperHeroScreen() {
   );
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1, backgroundColor: BACKGROUND_COLOR}}>
       <Animated.FlatList
         showsHorizontalScrollIndicator={false}
         decelerationRate={0}
         data={data}
-        renderItem={renderItem}
+        renderItem={_renderItem}
         keyExtractor={_keyExtractor}
         renderToHardwareTextureAndroid
         contentContainerStyle={{alignItems: 'center'}}
@@ -193,9 +105,3 @@ export default function PickSuperHeroScreen() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  pickerContainer: {
-    flexGrow: 1,
-  },
-});

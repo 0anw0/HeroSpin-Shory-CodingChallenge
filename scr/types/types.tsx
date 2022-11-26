@@ -8,7 +8,7 @@ export type navigationProps = {
   goBack: () => void;
 };
 
-export type DummyDataObject = {
+export type HerosDataType = {
   id: number;
   name: string;
   uri: string;
@@ -16,5 +16,5 @@ export type DummyDataObject = {
 };
 
 export type DummyDataList = {
-  item: DummyDataObject;
+  item: HerosDataType;
 };
