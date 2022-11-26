@@ -8,7 +8,7 @@ import {
   PickSuperHeroScreen
 } from 'screens'
 
-import { } from 'util'
+import { TOTALLY_RANDOM, PICK_SUPER_HERO, SPLASH_SCREEN, FILM_DETAILS } from 'utils';
 
 const StackNavigator = createStackNavigator();
 
@@ -18,10 +18,10 @@ const AppNavigator = () => {
       screenOptions={{
         headerShown: false,
       }}>
-      <StackNavigator.Screen name="Splash" component={SplashScreen} />
-      <StackNavigator.Screen name="RandomPick" component={RandomPickScreen} />
-      <StackNavigator.Screen name="SelectSuperHero" component={PickSuperHeroScreen} />
-      <StackNavigator.Screen name="FilmDetails" component={FilmDetailsScreen} />
+      <StackNavigator.Screen name={TOTALLY_RANDOM} component={SplashScreen} />
+      <StackNavigator.Screen name={SPLASH_SCREEN} component={RandomPickScreen} />
+      <StackNavigator.Screen name={PICK_SUPER_HERO} component={PickSuperHeroScreen} />
+      <StackNavigator.Screen name={FILM_DETAILS} component={FilmDetailsScreen} />
     </StackNavigator.Navigator>
   );
 };
