@@ -14,6 +14,7 @@ import {
   SPLASH_SCREEN,
   FILM_DETAILS,
 } from 'utils';
+
 import {Header} from 'components';
 
 const StackNavigator = createStackNavigator();

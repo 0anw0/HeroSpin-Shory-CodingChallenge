@@ -1,9 +1,19 @@
 export type screenProps = {
-    navigation: navigationProps;
+  navigation: navigationProps;
 };
 
 export type navigationProps = {
-    toggleDrawer: () => void;
-    navigate: (screenName: string) => void;
-    goBack: ()=> void
+  toggleDrawer: () => void;
+  navigate: (screenName: string) => void;
+  goBack: () => void;
+};
+
+export type DummyDataObject = {
+  id: number;
+  name: string;
+  uri: string;
+};
+
+export type DummyDataList = {
+  item: DummyDataObject;
 };
