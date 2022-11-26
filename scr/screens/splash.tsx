@@ -16,7 +16,7 @@ export default function SplashScreen() {
    * Requiring Logo image and memoizing it.
    *
    */
-  const logo: any = useMemo(() => require('../assets/logo.png'), []);
+  const logo: any = useMemo(() => require('../../assets/logo.png'), []);
   return (
     <View style={[generalStyles.centerAlign, generalStyles.defaultBackground]}>
       <FastImage
@@ -29,7 +29,7 @@ export default function SplashScreen() {
         Can't decide what super heros film to watch? Let Hero Spin help you.
       </Text>
       <Button
-        title={'React Native Elements'}
+        title={'TOTALLY RANDOM'}
         containerStyle={{
           width: 200,
           marginHorizontal: 50,
@@ -37,7 +37,7 @@ export default function SplashScreen() {
         }}
       />
       <Button
-        title={'React Native Elements'}
+        title={'PICK SUPER HERO'}
         containerStyle={{
           width: 200,
           marginHorizontal: 50,
