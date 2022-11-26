@@ -12,6 +12,7 @@ export type DummyDataObject = {
   id: number;
   name: string;
   uri: string;
+  description: string
 };
 
 export type DummyDataList = {
