@@ -13,8 +13,9 @@ export type HerosDataType = {
   description: string;
 };
 
-export type DummyDataList = {
+export type dataListType = {
   item: HerosDataType;
+  index: number;
 };
 
 export type HeaderProps = {
