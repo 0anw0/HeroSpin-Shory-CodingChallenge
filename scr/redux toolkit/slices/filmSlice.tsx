@@ -14,10 +14,12 @@ export const filmInfoSlice = createSlice({
     selectedFilm: (state, payload) => {
       return ({...state, selected: payload.payload})
     },
-    addSuperHeroName: (state, payload) => ({
-      ...state,
-      pickedSuperHeroName: payload.payload,
-    }),
+    addSuperHeroName: (state, payload) => {
+      return ({
+        ...state,
+        pickedSuperHeroName: payload.payload,
+      })
+    },
   },
 });
 

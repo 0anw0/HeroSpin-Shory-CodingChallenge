@@ -35,7 +35,7 @@ export default function FilmDetailsScreen() {
 
   const {selected} = useSelector(state => state);
   
-  console.log("object :", selected)
+  // console.log("object :", selected)
   useEffect(() => {
     Orientation.lockToPortrait();
   }, []);

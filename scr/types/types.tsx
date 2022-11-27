@@ -35,7 +35,7 @@ export type FilmInfoSectionType = {
 export type FilmNameComponentType = {
   title: string;
   duration: number;
-  onSufflePress?: () => void;
+  onChangeFilm?: () => void;
   onViewPress?: () => void;
 };
 

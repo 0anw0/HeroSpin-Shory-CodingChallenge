@@ -61,23 +61,23 @@ const data = {
 };
 
 export default function RandomPickScreen({navigation, route}: screenProps) {
-  // console.log("Props: ", props)
+  // console.log("Props: ", {navigation, route})
 
   const [loading, setLoading] = useState(true);
   const [filmData, setFilmData] = useState({})
 
   const dispatch = useDispatch();
 
-  const {pickedSuperHeroName} = useSelector(state => state);
+  const {pickedSuperHeroName, allfilms} = useSelector(state => state);
 
   useEffect(() => {
     Orientation.lockToPortrait();
     let heroName = '';
 
-    if (route.name == TOTALLY_RANDOM) {
+    if (pickedSuperHeroName.length == 0) {
       let heroIndex = pickRandom(HerosData.length -1);
       heroName = HerosData[heroIndex].name;
-    } else if (route.name == PICK_SUPER_HERO) heroName = pickedSuperHeroName;
+    } else  heroName = pickedSuperHeroName;
 
     _getFilms(heroName);
   }, []);
@@ -102,6 +102,15 @@ export default function RandomPickScreen({navigation, route}: screenProps) {
       });
   };
 
+  const _onChangeFilm =async () => { 
+    let randomFilmIndex = pickRandom(allfilms.length -1);
+    console.log(allfilms.length -1, randomFilmIndex)
+    let selected = await fetchFilmsData(allfilms[randomFilmIndex].imdbID);
+    setFilmData(selected)
+    console.log(selected)
+    dispatch(selectedFilm(selected));
+  }
+
   const {Title, Year, Genre, Actors, Awards, BoxOffice} = filmData;
 
   const _navigateToDetailsScreen = () => navigation.navigate(FILM_DETAILS);
@@ -121,6 +130,7 @@ export default function RandomPickScreen({navigation, route}: screenProps) {
             title={Title}
             duration={7500}
             onViewPress={_navigateToDetailsScreen}
+            onChangeFilm={_onChangeFilm}
           />
           <FilmInfoSection type={'Actors'} value={Actors} duration={4000} />
           <FilmInfoSection type={'Year'} value={Year} duration={3000} />

@@ -5,7 +5,7 @@ const imageUri: string =
 
 export const HerosData: HerosDataType[] = [
   {
-    id: 1,
+    id: 0,
     name: 'CAPTAIN AMERICA',
     uri:
       imageUri +
@@ -14,7 +14,7 @@ export const HerosData: HerosDataType[] = [
       'In the present day, scientists in the Arctic uncover an old, frozen aircraft. In March 1942, Nazi lieutenant general Johann Schmidt and his men steal a mysterious relic called the Tesseract,[N 2] which possesses untold godly powers, from the town of Tønsberg in German-occupied Norway.',
   },
   {
-    id: 2,
+    id: 1,
     name: 'IRON MAN',
     uri:
       imageUri +
@@ -23,7 +23,7 @@ export const HerosData: HerosDataType[] = [
       'In the present day, scientists in the Arctic uncover an old, frozen aircraft. In March 1942, Nazi lieutenant general Johann Schmidt and his men steal a mysterious relic called the Tesseract,[N 2] which possesses untold godly powers, from the town of Tønsberg in German-occupied Norway.',
   },
   {
-    id: 3,
+    id: 2,
     name: 'THOR',
     uri:
       imageUri +
@@ -31,7 +31,7 @@ export const HerosData: HerosDataType[] = [
     description: '',
   },
   {
-    id: 4,
+    id: 3,
     name: 'HULK',
     uri:
       imageUri +
@@ -39,7 +39,7 @@ export const HerosData: HerosDataType[] = [
     description: `It was patently apparent that [the monstrous character the] Thing was the most popular character in [Marvel's recently created superhero team the] Fantastic Four. ... For a long time, I'd been aware of the fact that people were more likely to favor someone who was less than perfect. ... It's a safe bet that you remember Quasimodo, but how easily can you name any of the heroic, handsomer, more glamorous characters in The Hunchback of Notre Dame? And then there's Frankenstein.`,
   },
   {
-    id: 5,
+    id: 4,
     name: 'BLACK WIDOW',
     uri:
       imageUri +

@@ -43,4 +43,4 @@ export const fetchFilmsData = async (imdb: string = '') => {
 };
 
 
-export const pickRandom = (length:number) => Math.floor(Math.random() * length + 1);
+export const pickRandom = (length:number) => Math.floor(Math.random() * length);

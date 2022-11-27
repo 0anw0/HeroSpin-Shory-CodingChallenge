@@ -19,8 +19,21 @@ import {
   SPACING,
   WHITE,
 } from 'styles';
+import { useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
+import { TOTALLY_RANDOM } from 'utils';
+import { addSuperHeroName } from "../redux toolkit/slices/filmSlice";
 
 const SuperHeroCard = ({item, index, scrollX}) => {
+
+  const navigation = useNavigation()
+  const dispatch = useDispatch()
+
+  const onItemSelectPress = ()=> { 
+    dispatch(addSuperHeroName(item.name))
+    navigation.navigate(TOTALLY_RANDOM)
+  }
+
   const inputRange = [
     (index - 2) * ITEM_WIDTH,
     (index - 1) * ITEM_WIDTH,
@@ -119,7 +132,7 @@ const SuperHeroCard = ({item, index, scrollX}) => {
                   alignItems: 'flex-end',
                 },
               ]}>
-              <TouchableOpacity
+              <TouchableOpacity onPress={onItemSelectPress}
                 style={{
                   width: 40,
                   height: 40,
