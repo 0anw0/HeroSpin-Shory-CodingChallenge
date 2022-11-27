@@ -7,6 +7,7 @@ import Orientation from 'react-native-orientation-locker';
 import {generalStyles} from 'styles';
 import {screenProps} from 'scr/types/types';
 import {TOTALLY_RANDOM, PICK_SUPER_HERO} from 'utils';
+import {fetchFilms} from 'utils';
 
 /**
  *
@@ -16,8 +17,8 @@ import {TOTALLY_RANDOM, PICK_SUPER_HERO} from 'utils';
  */
 export default function SplashScreen({navigation}: screenProps) {
   useEffect(() => {
-    Orientation.lockToPortrait(); 
-  }, [])
+    Orientation.lockToPortrait();
+  }, []);
   /**
    * Requiring Logo image and memoizing it.
    *
@@ -77,7 +78,8 @@ export default function SplashScreen({navigation}: screenProps) {
             width: '80%',
           },
         ]}>
-        <Text style={{fontFamily: 'Cairo-Bold', fontSize: 20, textAlign:'center'}}>
+        <Text
+          style={{fontFamily: 'Cairo-Bold', fontSize: 20, textAlign: 'center'}}>
           Can't decide what super heros film to watch? Let Hero Spin help you.
         </Text>
       </View>

@@ -1,21 +1,28 @@
-import { createSlice } from '@reduxjs/toolkit'
-
+import {createSlice} from '@reduxjs/toolkit';
 
 export const filmInfoSlice = createSlice({
-  name: 'filmInfoSlice',          
+  name: 'filmInfoSlice',
   initialState: {
-    film:{},
-    pickedSuperHeroId: -2, // id = -1 was used in flatList Rendering to achieve animating purposes
+    allfilms: [],
+    selected: {},
+    pickedSuperHeroName: '',
   },
   reducers: {
-    addNewFilm: (state, film) => {
-      let newState = {...state, film}
-      return newState
+    addNewFilm: (state, payload) => {
+      return ({...state, allfilms: payload.payload})
     },
-  }
-})
+    selectedFilm: (state, payload) => {
+      return ({...state, selected: payload.payload})
+    },
+    addSuperHeroName: (state, payload) => ({
+      ...state,
+      pickedSuperHeroName: payload.payload,
+    }),
+  },
+});
 
 // Action creators are generated for each case reducer function
-export const { addNewFilm } = filmInfoSlice.actions
+export const {addNewFilm, addSuperHeroName, selectedFilm} =
+  filmInfoSlice.actions;
 
-export default filmInfoSlice.reducer
+export default filmInfoSlice.reducer;

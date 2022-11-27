@@ -1,16 +1,22 @@
-import React, { useEffect } from 'react';
-import { View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {ActivityIndicator, View} from 'react-native';
 import Orientation from 'react-native-orientation-locker';
 
 import {FilmInfoSection} from 'components';
-import {
-  BACKGROUND_COLOR,
-  generalStyles,
-} from 'styles';
+import {BACKGROUND_COLOR, generalStyles} from 'styles';
 
 import {FilmNameAndButtons} from 'components';
-import { screenProps } from 'types';
-import { FILM_DETAILS } from '../utils/screensName';
+import {screenProps} from 'types';
+import {
+  FILM_DETAILS,
+  PICK_SUPER_HERO,
+  TOTALLY_RANDOM,
+} from '../utils/screensName';
+import {SEC_COLOR} from 'styles';
+import {fetchFilms, HerosData, pickRandom} from 'utils';
+import {useDispatch, useSelector} from 'react-redux';
+import {addNewFilm, selectedFilm} from '../redux toolkit/slices/filmSlice';
+import {fetchFilmsData} from '../utils/functions';
 
 const data = {
   Title: 'Guardians of the Galaxy Vol. 2',
@@ -54,14 +60,51 @@ const data = {
   Response: 'True',
 };
 
-export default function RandomPickScreen({navigation}:screenProps) {
-  useEffect(() => {
-    Orientation.lockToPortrait(); 
-  }, [])
+export default function RandomPickScreen({navigation, route}: screenProps) {
+  // console.log("Props: ", props)
 
-  const {Title, Year, Genre, Actors, Awards, BoxOffice} = data;
-  
-  const _navigateToDetailsScreen = ()=> navigation.navigate(FILM_DETAILS)
+  const [loading, setLoading] = useState(true);
+  const [filmData, setFilmData] = useState({})
+
+  const dispatch = useDispatch();
+
+  const {pickedSuperHeroName} = useSelector(state => state);
+
+  useEffect(() => {
+    Orientation.lockToPortrait();
+    let heroName = '';
+
+    if (route.name == TOTALLY_RANDOM) {
+      let heroIndex = pickRandom(HerosData.length -1);
+      heroName = HerosData[heroIndex].name;
+    } else if (route.name == PICK_SUPER_HERO) heroName = pickedSuperHeroName;
+
+    _getFilms(heroName);
+  }, []);
+
+  const _getFilms = async (heroName: string) => {
+    let result = [],
+      randomFilmIndex = 1,
+      selected= {};
+    fetchFilms(heroName)
+      .then(async res => {
+        dispatch(addNewFilm(res.Search));
+        randomFilmIndex = pickRandom(res.Search.length -1);
+        console.log(randomFilmIndex)
+        selected = await fetchFilmsData(res.Search[randomFilmIndex].imdbID);
+        dispatch(selectedFilm(selected));
+
+        setFilmData(selected)
+      })
+      .catch(error => console.log('error', error))
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  const {Title, Year, Genre, Actors, Awards, BoxOffice} = filmData;
+
+  const _navigateToDetailsScreen = () => navigation.navigate(FILM_DETAILS);
 
   return (
     <View
@@ -70,11 +113,25 @@ export default function RandomPickScreen({navigation}:screenProps) {
         flex: 1,
         ...generalStyles.centerAlign,
       }}>
-      <FilmNameAndButtons title={Title} duration={7500} onViewPress={_navigateToDetailsScreen}/>
-      <FilmInfoSection type={'Actors'} value={Actors} duration={4000} />
-      <FilmInfoSection type={'Year'} value={Year}  duration={3000}/>
-      <FilmInfoSection type={'BoxOffice'} value={BoxOffice} duration={2000} />
-      <FilmInfoSection type={'Awards'} value={Awards} duration={1000}/>
+      {loading ? (
+        <ActivityIndicator size={'large'} color={SEC_COLOR} />
+      ) : (
+        <>
+          <FilmNameAndButtons
+            title={Title}
+            duration={7500}
+            onViewPress={_navigateToDetailsScreen}
+          />
+          <FilmInfoSection type={'Actors'} value={Actors} duration={4000} />
+          <FilmInfoSection type={'Year'} value={Year} duration={3000} />
+          <FilmInfoSection
+            type={'BoxOffice'}
+            value={BoxOffice}
+            duration={2000}
+          />
+          <FilmInfoSection type={'Awards'} value={Awards} duration={1000} />
+        </>
+      )}
     </View>
   );
 }

@@ -39,6 +39,12 @@ export type FilmNameComponentType = {
   onViewPress?: () => void;
 };
 
+type routeProps = { 
+  name:string, 
+  params: any | undefined
+}
+
 export type screenProps = {
   navigation: navigationProps;
+  route: routeProps
 };
