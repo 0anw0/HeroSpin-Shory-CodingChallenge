@@ -1,25 +1,18 @@
 import React, {useEffect, useMemo} from 'react';
-import {
-  View,
-  Animated,
-  ListRenderItem,
-} from 'react-native';
+import {View, Animated, ListRenderItem, Platform} from 'react-native';
 import Orientation from 'react-native-orientation-locker';
 
-import {
-  BACKGROUND_COLOR,ITEM_WIDTH, width
-} from 'styles';
-import { SuperHeroCard } from 'components';
-import { screenProps, HerosDataType,dataListType } from 'types';
-import { HerosData } from 'utils';
+import {BACKGROUND_COLOR, ITEM_WIDTH, width} from 'styles';
+import {SuperHeroCard} from 'components';
+import {screenProps, HerosDataType, dataListType} from 'types';
+import {HerosData} from 'utils';
 
 const EmptyCard = () => <View style={{width: width * 0.1}}></View>;
 
-export default function PickSuperHeroScreen(props:screenProps) {
-
+export default function PickSuperHeroScreen(props: screenProps) {
   useEffect(() => {
-    Orientation.lockToPortrait(); 
-  }, [])
+    Orientation.lockToPortrait();
+  }, []);
 
   const scrollX = React.useRef(new Animated.Value(0)).current;
 
@@ -29,12 +22,15 @@ export default function PickSuperHeroScreen(props:screenProps) {
     {id: -1, name: 'right-space'},
   ];
 
-  const renderItem:ListRenderItem<HerosDataType> = ({item, index}:dataListType) => {
+  const renderItem: ListRenderItem<HerosDataType> = ({
+    item,
+    index,
+  }: dataListType) => {
     if (item.id == 0 || item.id == -1) return <EmptyCard />;
     else return <SuperHeroCard item={item} index={index} scrollX={scrollX} />;
   };
 
-  const keyExtractor = (item) => item.id
+  const keyExtractor = item => item.id;
 
   const _renderItem = useMemo(() => renderItem, []);
   const _keyExtractor = useMemo(() => keyExtractor, []);
@@ -48,7 +44,7 @@ export default function PickSuperHeroScreen(props:screenProps) {
     <View style={{flex: 1, backgroundColor: BACKGROUND_COLOR}}>
       <Animated.FlatList
         showsHorizontalScrollIndicator={false}
-        decelerationRate={0}
+        decelerationRate={Platform.OS === 'ios' ? 0 : 0.98}
         data={data}
         renderItem={_renderItem}
         keyExtractor={_keyExtractor}

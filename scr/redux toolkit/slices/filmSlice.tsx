@@ -3,10 +3,13 @@ import { createSlice } from '@reduxjs/toolkit'
 
 export const filmInfoSlice = createSlice({
   name: 'filmInfoSlice',          
-  initialState: {},
+  initialState: {
+    film:{},
+    pickedSuperHeroId: -2, // id = -1 was used in flatList Rendering to achieve animating purposes
+  },
   reducers: {
     addNewFilm: (state, film) => {
-      let newState = film
+      let newState = {...state, film}
       return newState
     },
   }
