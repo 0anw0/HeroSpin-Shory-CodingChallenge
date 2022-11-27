@@ -17,7 +17,7 @@ export default function PickSuperHeroScreen(props: screenProps) {
   const scrollX = React.useRef(new Animated.Value(0)).current;
 
   const data = [
-    {id: 0, name: 'left-space'},
+    {id: -2, name: 'left-space'},
     ...HerosData,
     {id: -1, name: 'right-space'},
   ];
@@ -26,7 +26,7 @@ export default function PickSuperHeroScreen(props: screenProps) {
     item,
     index,
   }: dataListType) => {
-    if (item.id == 0 || item.id == -1) return <EmptyCard />;
+    if (item.id == -2 || item.id == -1) return <EmptyCard />;
     else return <SuperHeroCard item={item} index={index} scrollX={scrollX} />;
   };
 

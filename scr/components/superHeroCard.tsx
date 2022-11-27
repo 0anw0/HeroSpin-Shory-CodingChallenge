@@ -117,25 +117,26 @@ const SuperHeroCard = ({item, index, scrollX}) => {
             <View
               style={[
                 {
-                  height: '70%',
+                  height: '75%',
                   width: '100%',
+                  padding:15
                 },
                 generalStyles.centerAlign,
               ]}>
-              <Text>{item.description}</Text>
+              <Text style={{ fontSize: 12, fontFamily:'Cairo-Regular', lineHeight:15}}>{item.description}</Text>
             </View>
             <View
               style={[
                 {
-                  height: '30%',
+                  height: '25%',
                   width: '100%',
                   alignItems: 'flex-end',
                 },
               ]}>
               <TouchableOpacity onPress={onItemSelectPress}
                 style={{
-                  width: 40,
-                  height: 40,
+                  width: 35,
+                  height: 35,
                   backgroundColor: MAIN_COLOR,
                   borderRadius: 20,
                   ...generalStyles.centerAlign, 
